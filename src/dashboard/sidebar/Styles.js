@@ -1,3 +1,4 @@
+
 export const sidebarStyles = {
   drawer: {
     width: 320,
@@ -11,6 +12,17 @@ export const sidebarStyles = {
     "& .Mui-selected": {
       color: "red",
     },
+  },
+  headerWrapper: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  header: {
+    padding: '25px',
+    color: '#fff',
+    fontWeight: 'bolder',
+    marginLeft: '-35px'
   },
   icons: {
     color: "rgba(255, 255, 255, 0.7)!important",
