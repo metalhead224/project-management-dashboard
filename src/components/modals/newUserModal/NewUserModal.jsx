@@ -109,6 +109,8 @@ const NewUserModal = ({ open, onClose, addNewUser }) => {
       subTitle="Fill out the inputs and hit submit button"
       content={getContent()}
       onSubmit={handleSubmit(addUser)}
+      firstBtn='submit'
+      secondBtn='cancel'
     />
   );
 };

@@ -3,9 +3,9 @@ import SearchIcon from "@mui/icons-material/Search";
 import Input from "@mui/material/Input";
 import { Box } from "@mui/material";
 
-const SearchBar = ({ placeholder, onChange, searchBarWidth }) => {
+const SearchBar = ({ placeholder, onChange, searchBarWidth, sx }) => {
   return (
-    <Box sx={{display:'flex',alignItems: 'center'}}>
+    <Box sx={[{display:'flex',alignItems: 'center'}, sx]}>
     <SearchIcon sx={{mr: '10px'}}/>
       <Input placeholder={placeholder} onChange={onChange} 
         sx={{width: searchBarWidth, color: 'rgba(0, 0, 0, 0.6)', fontSize: '1.1rem'}}
