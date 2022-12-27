@@ -1,25 +1,12 @@
 import {
   DataGrid,
-  GridToolbarContainer,
-  GridToolbarExport,
-  GridToolbarQuickFilter,
 } from "@mui/x-data-grid";
 import React, { useState } from "react";
 
-const DataTable = ({ rows, columns, loading, sx, componentsProps }) => {
+const DataTable = ({ rows, columns, loading, sx, checkboxSelection }) => {
   const [pageSize, setPageSize] = useState(5);
 
-  const CustomToolbar = () => {
-    return (
-      <GridToolbarContainer
-        sx={{ display: "flex", justifyContent: "space-between", mb: "10px" }}
-      >
-        <GridToolbarExport />
-        <GridToolbarQuickFilter />
-      </GridToolbarContainer>
-    );
-  };
-
+  
   const headerTitle = {
     ".css-1jbbcbn-MuiDataGrid-columnHeaderTitle": {
       fontSize: "16px",
@@ -37,11 +24,7 @@ const DataTable = ({ rows, columns, loading, sx, componentsProps }) => {
       rowsPerPageOptions={[2, 5, 10]}
       pagination
       onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
-      components={{
-        Toolbar: CustomToolbar,
-      }}
-      componentsProps={componentsProps}
-      
+      checkboxSelection={checkboxSelection}
     />
   );
 };

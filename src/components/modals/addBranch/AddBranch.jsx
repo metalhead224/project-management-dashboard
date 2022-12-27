@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import BasicModal from "../../common/basicModal/BasicModal";
 import CustomRadioGroup from "../../common/radioButtonGroup/CustomRadioGroup";
 
-const AddBranch = ({ open, onClose, setOpen }) => {
+const AddBranch = ({ open, onClose }) => {
   const [formData, setFormData] = useState({
     code: "",
     shortName: "",

@@ -25,7 +25,7 @@ const columns = [
 // ];
 
 const branchTableStyles = {
-  height: "450px",
+  height: "500px",
 };
 
 const BranchTable = () => {
@@ -33,28 +33,35 @@ const BranchTable = () => {
   const [open, setOpen] = useState(false);
   const [id, setId] = useState(0);
 
-  useEffect(() => {
-    axios
-      .get("https://localhost:7098/api/Branch")
-      .then((response) => {
-        const data = response.data;
-        setBranches(data);
+
+
+
+   const getData = async () => {
+    await axios
+     .get("https://localhost:7098/api/Branch")
+     .then((response) => {
+       const data = response.data;
+       setBranches(data);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, [branches]);
+    }
+
+    useEffect(() => {
+      getData();
+    }, [branches])
+  
 
   const handleDelete = async (e, id) => {
-
     e.preventDefault();
 
     await axios
       .delete(`https://localhost:7098/api/Branch/${id}`)
-      .then((response) => {
+      .then(() => {
         const data = branches.filter((branch) => branch.id !== id);
         setBranches(data);
-        toast.success("Deleted successfully!")
+        toast.success("Deleted successfully!");
       })
       .catch((error) => {
         toast.error(error.message);
@@ -94,18 +101,13 @@ const BranchTable = () => {
 
   return (
     <>
-      <DataTable
-        rows={branches}
-        columns={columns.concat(actionColumn)}
-        loading={!branches.length}
-        sx={branchTableStyles}
-        componentsProps={{
-          toolbar: {
-            showQuickFilter: true,
-            quickFilterProps: { debounceMs: 500 },
-          },
-        }}
-      />
+        <DataTable
+          rows={branches}
+          columns={columns.concat(actionColumn)}
+          loading={!branches.length}
+          sx={branchTableStyles}
+          checkboxSelection
+        />
       <ConfirmationModal
         open={open}
         onClose={() => setOpen(false)}

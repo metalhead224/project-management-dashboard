@@ -28,7 +28,7 @@ const Storage = () => {
     <GridWrapper>
       <BasicCard
         header={getHeader()}
-        content={<BranchTable onError="Error fetching data" />}
+        content={<BranchTable />}
       />
       <AddBranch open={open} onClose={() => setOpen(false)} />
     </GridWrapper>
